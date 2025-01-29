@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheckCircle, FaUser, FaEnvelope, FaLock, FaGoogle, FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Use react-router-dom Link
-import { useHistory } from 'react-router-dom'; // If needed for navigation
+// import { useHistory } from 'react-router-dom'; // If needed for navigation
 
 const commonStyles = {
   inputIcon: "absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none",

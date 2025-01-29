@@ -1,4 +1,5 @@
 import './App.css'
+import DelivaryHome from './components/delivary/DelivaryHome'
 import Homepage from './components/home/Homepage'
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
 
   return (
     <div>
-      <Homepage />
+      {/* <Homepage /> */}
+      <DelivaryHome />
       
     </div>
   )
