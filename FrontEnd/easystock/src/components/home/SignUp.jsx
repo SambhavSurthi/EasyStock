@@ -13,16 +13,15 @@ const commonStyles = {
 
 const SignUp = () => {
   return (
-    <section className="bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <section className="bg-white min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Left side image and info */}
         <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
           <div className="absolute inset-0">
             <img
-              className="object-cover"
-              src="https://www.auraui.com/memeimage/working-women.jpg"
+              className="object-cover object-top w-full h-full"
+              src="./SignUp.jpg"
               alt="Girl working on laptop"
-              style={{ width: '100%', height: '100%' }}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
@@ -67,6 +66,7 @@ const SignUp = () => {
             </p>
 
             <form action="#" method="POST" className="mt-8 space-y-5">
+              {/* Full Name Field */}
               <div>
                 <label className="text-base font-medium text-gray-900">
                   First & Last name
@@ -83,6 +83,7 @@ const SignUp = () => {
                 </div>
               </div>
 
+              {/* Email Field */}
               <div>
                 <label className="text-base font-medium text-gray-900">
                   Email address
@@ -99,6 +100,7 @@ const SignUp = () => {
                 </div>
               </div>
 
+              {/* Password Field */}
               <div>
                 <label className="text-base font-medium text-gray-900">
                   Password
@@ -115,12 +117,25 @@ const SignUp = () => {
                 </div>
               </div>
 
+              {/* Submit Button */}
               <div>
                 <button type="submit" className={commonStyles.button}>
                   Sign up
                 </button>
               </div>
             </form>
+
+            {/* Social Sign-Up */}
+            {/* <div className="mt-6 space-y-4">
+              <button type="button" className={commonStyles.socialButton}>
+                <FaGoogle className="w-5 h-5 mr-2" />
+                Sign up with Google
+              </button>
+              <button type="button" className={commonStyles.socialButton}>
+                <FaFacebook className="w-5 h-5 mr-2" />
+                Sign up with Facebook
+              </button>
+            </div> */}
           </div>
         </div>
       </div>

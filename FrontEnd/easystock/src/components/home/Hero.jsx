@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { MdPlayArrow } from "react-icons/md";
+import { motion } from "framer-motion";
 
+// Common styles
 const commonStyles = {
   header: "py-4 md:py-6",
   container: "px-4 mx-auto sm:px-6 lg:px-8",
   flexCenter: "flex items-center justify-between",
-  logo: "w-auto h-8",
+  logo: "w-auto h-14",
   menuButton: "text-gray-900",
   menuIcon: "w-7 h-7",
   navLink:
@@ -28,15 +29,37 @@ const commonStyles = {
   image: "transform scale-110",
 };
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger = {
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+};
+
 function Hero() {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="overflow-x-hidden bg-gray-50">
-      <header className={commonStyles.header}>
+      {/* Header */}
+      <motion.header
+        initial="hidden"
+        whileInView="visible"
+        variants={stagger}
+        viewport={{ once: true }}
+        className={commonStyles.header}
+      >
         <div className={commonStyles.container}>
           <div className={commonStyles.flexCenter}>
-            <div className="flex-shrink-0">
+            <motion.div variants={fadeInUp} className="flex-shrink-0">
               <a
                 href="#"
                 title="Home"
@@ -48,9 +71,9 @@ function Hero() {
                   alt="Logo"
                 />
               </a>
-            </div>
+            </motion.div>
 
-            <div className="flex lg:hidden">
+            <motion.div variants={fadeInUp} className="flex lg:hidden">
               <button
                 type="button"
                 className={commonStyles.menuButton}
@@ -63,9 +86,12 @@ function Hero() {
                   <FiMenu className={commonStyles.menuIcon} />
                 )}
               </button>
-            </div>
+            </motion.div>
 
-            <div className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10 xl:space-x-16">
+            <motion.div
+              variants={fadeInUp}
+              className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10 xl:space-x-16"
+            >
               <a href="#" title="Features" className={commonStyles.navLink}>
                 Home
               </a>
@@ -75,9 +101,12 @@ function Hero() {
               <a href="#" title="Automation" className={commonStyles.navLink}>
                 Contact Us
               </a>
-            </div>
+            </motion.div>
 
-            <div className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-10">
+            <motion.div
+              variants={fadeInUp}
+              className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-10"
+            >
               <a
                 href="#"
                 title="Customer Login"
@@ -93,70 +122,94 @@ function Hero() {
               >
                 Sign up
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {expanded && (
-            <nav className="px-1 py-8">
+            <motion.nav
+              initial="hidden"
+              whileInView="visible"
+              variants={stagger}
+              viewport={{ once: true }}
+              className="px-1 py-8"
+            >
               <div className="grid gap-y-7">
-                <a
+                <motion.a
+                  variants={fadeInUp}
                   href="#"
                   title="Features"
                   className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
                 >
                   Home
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={fadeInUp}
                   href="#"
                   title="Pricing"
                   className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
                 >
                   About Us
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={fadeInUp}
                   href="#"
                   title="Automation"
                   className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
                 >
                   Contact Us
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={fadeInUp}
                   href="#"
                   title="Customer Login"
                   className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
                 >
                   Login
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={fadeInUp}
                   href="#"
                   title="Sign Up"
                   className={commonStyles.signUpButton}
                   role="button"
                 >
                   Sign up
-                </a>
+                </motion.a>
               </div>
-            </nav>
+            </motion.nav>
           )}
         </div>
-      </header>
+      </motion.header>
 
+      {/* Hero Section */}
       <section className="pt-12 bg-gray-50 sm:pt-16">
         <div className={commonStyles.container}>
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className={commonStyles.sectionTitle}>
-            "Effortless Inventory Management, Smarter Business Growth"
-            </h1>
-            <p className={`${commonStyles.sectionHeading} mt-5`}>
-            "Simplify Inventory, Maximize Efficiency – with 
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={stagger}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto text-center"
+          >
+            <motion.h1 variants={fadeInUp} className={commonStyles.sectionTitle}>
+              "Effortless Inventory Management, Smarter Business Growth"
+            </motion.h1>
+            <motion.p
+              variants={fadeInUp}
+              className={`${commonStyles.sectionHeading} mt-5`}
+            >
+              "Simplify Inventory, Maximize Efficiency – with
               <span className={commonStyles.gradientText}>
                 <span className={commonStyles.gradientBackground}></span>
                 <span className="relative"> EasyStock!</span>
               </span>
               "
-            </p>
+            </motion.p>
 
-            <div className="px-8 sm:items-center sm:justify-center sm:px-0 sm:space-x-5 sm:flex mt-9">
+            <motion.div
+              variants={fadeInUp}
+              className="px-8 sm:items-center sm:justify-center sm:px-0 sm:space-x-5 sm:flex mt-9"
+            >
               <a
                 href="#"
                 title="Get more customers"
@@ -172,21 +225,26 @@ function Hero() {
                 className={commonStyles.demoButton}
                 role="button"
               >
-                
                 Know About Us
               </a>
-            </div>
+            </motion.div>
 
-            <p className={commonStyles.textMuted}>
+            <motion.p variants={fadeInUp} className={commonStyles.textMuted}>
               {/* 60 Days free trial · No credit card required */}
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
 
         <div className="pb-12 bg-white">
           <div className="relative">
             <div className="absolute inset-0 h-2/3 bg-gray-50"></div>
-            <div className={commonStyles.imageContainer}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className={commonStyles.imageContainer}
+            >
               <div className="lg:max-w-6xl lg:mx-auto">
                 <img
                   className={commonStyles.image}
@@ -194,7 +252,7 @@ function Hero() {
                   alt="Illustration"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

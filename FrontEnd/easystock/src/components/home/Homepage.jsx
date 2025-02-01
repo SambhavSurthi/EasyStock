@@ -6,12 +6,14 @@ import Faq from './Faq'
 import Contactus from './Contactus'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import AboutUs from './AboutUs'
 
 const Homepage = () => {
   return (
     <div>
         <Hero />
-        <Feature />
+        {/* <Feature /> */}
+        <AboutUs />
         <Faq />
         <Contactus/>
         <Footer />

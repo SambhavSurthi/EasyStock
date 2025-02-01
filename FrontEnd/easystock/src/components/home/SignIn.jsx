@@ -12,14 +12,14 @@ const commonStyles = {
 
 const SignIn = () => {
   return (
-    <section className="bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <section className="bg-white min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Left Side Image and Info */}
         <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
           <div className="absolute inset-0">
             <img
               className="object-cover object-top w-full h-full"
-              src="https://www.pexels.com/photo/business-team-working-in-the-office-3183187/"
+              src="./SignIn.jpg"
               alt="EasyStock Overview"
             />
           </div>
@@ -112,7 +112,16 @@ const SignIn = () => {
             </form>
 
             {/* Social Sign In */}
-            
+            {/* <div className="mt-6 space-y-4">
+              <button type="button" className={commonStyles.socialButton}>
+                <FaGoogle className="w-5 h-5 mr-2" />
+                Sign in with Google
+              </button>
+              <button type="button" className={commonStyles.socialButton}>
+                <FaFacebook className="w-5 h-5 mr-2" />
+                Sign in with Facebook
+              </button>
+            </div> */}
           </div>
         </div>
       </div>

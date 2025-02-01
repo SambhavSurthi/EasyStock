@@ -21,7 +21,7 @@ const commonStyles = {
   image: "w-full rounded-sm",
 };
 
-const AboutUs = () => {
+const Feature = () => {
   return (
     <section className={commonStyles.section}>
       <div className={commonStyles.container}>
@@ -103,4 +103,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Feature;
