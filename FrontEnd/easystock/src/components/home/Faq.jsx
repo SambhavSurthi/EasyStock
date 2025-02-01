@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Importing Link from react-router-dom
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const Faq = () => {
+const Faq = ({id}) => {
   const faqs = [
     {
       id: 1,
@@ -73,7 +73,7 @@ const Faq = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-50 sm:py-16 lg:py-20 xl:py-24">
+    <section id={id} className="py-12 bg-gray-50 sm:py-16 lg:py-20 xl:py-24">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">

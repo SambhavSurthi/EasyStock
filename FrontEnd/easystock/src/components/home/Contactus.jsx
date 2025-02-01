@@ -96,9 +96,9 @@ const Form = () => {
   );
 };
 
-const Contactus = () => {
+const Contactus = ({id}) => {
   return (
-    <section className={`bg-gray-50 ${style.commonSectionStyles}`}>
+    <section id={id} className={`bg-gray-50 ${style.commonSectionStyles}`}>
       <div className={style.commonContainerStyles}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10">
           <div className="flex flex-col justify-between lg:py-5">

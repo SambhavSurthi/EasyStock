@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Common styles
 const commonStyles = {
@@ -44,6 +45,14 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
 };
 
+// Smooth scrolling function
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 function Hero() {
   const [expanded, setExpanded] = useState(false);
 
@@ -60,8 +69,8 @@ function Hero() {
         <div className={commonStyles.container}>
           <div className={commonStyles.flexCenter}>
             <motion.div variants={fadeInUp} className="flex-shrink-0">
-              <a
-                href="#"
+              <Link
+                to="/"
                 title="Home"
                 className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
               >
@@ -70,7 +79,7 @@ function Hero() {
                   src="./Logo-removebg.png"
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex lg:hidden">
@@ -92,36 +101,59 @@ function Hero() {
               variants={fadeInUp}
               className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10 xl:space-x-16"
             >
-              <a href="#" title="Features" className={commonStyles.navLink}>
+              <Link
+                to="/"
+                title="Home"
+                className={commonStyles.navLink}
+                onClick={() => scrollToSection("hero")}
+              >
                 Home
-              </a>
-              <a href="#" title="Pricing" className={commonStyles.navLink}>
+              </Link>
+              <Link
+                to="/"
+                title="About Us"
+                className={commonStyles.navLink}
+                onClick={() => scrollToSection("about")}
+              >
                 About Us
-              </a>
-              <a href="#" title="Automation" className={commonStyles.navLink}>
+              </Link>
+              <Link
+                to="/"
+                title="faq"
+                className={commonStyles.navLink}
+                onClick={() => scrollToSection("faq")}
+              >
+                FAQ
+              </Link>
+              <Link
+                to="/"
+                title="Contact Us"
+                className={commonStyles.navLink}
+                onClick={() => scrollToSection("contact")}
+              >
                 Contact Us
-              </a>
+              </Link>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
               className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-10"
             >
-              <a
-                href="#"
+              <Link
+                to="/signin"
                 title="Customer Login"
                 className={commonStyles.navLink}
               >
                 Login
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/signup"
                 title="Sign Up"
                 className={commonStyles.signUpButton}
                 role="button"
               >
                 Sign up
-              </a>
+              </Link>
             </motion.div>
           </div>
 
@@ -134,47 +166,65 @@ function Hero() {
               className="px-1 py-8"
             >
               <div className="grid gap-y-7">
-                <motion.a
-                  variants={fadeInUp}
-                  href="#"
-                  title="Features"
-                  className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
-                >
-                  Home
-                </motion.a>
-                <motion.a
-                  variants={fadeInUp}
-                  href="#"
-                  title="Pricing"
-                  className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
-                >
-                  About Us
-                </motion.a>
-                <motion.a
-                  variants={fadeInUp}
-                  href="#"
-                  title="Automation"
-                  className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
-                >
-                  Contact Us
-                </motion.a>
-                <motion.a
-                  variants={fadeInUp}
-                  href="#"
-                  title="Customer Login"
-                  className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
-                >
-                  Login
-                </motion.a>
-                <motion.a
-                  variants={fadeInUp}
-                  href="#"
-                  title="Sign Up"
-                  className={commonStyles.signUpButton}
-                  role="button"
-                >
-                  Sign up
-                </motion.a>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/"
+                    title="Home"
+                    className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
+                    onClick={() => scrollToSection("hero")}
+                  >
+                    Home
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/"
+                    title="About Us"
+                    className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
+                    onClick={() => scrollToSection("about")}
+                  >
+                    About Us
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/"
+                    title="faq"
+                    className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
+                    onClick={() => scrollToSection("faq")}
+                  >
+                    FAQ
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/"
+                    title="Contact Us"
+                    className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
+                    onClick={() => scrollToSection("contact")}
+                  >
+                    Contact Us
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/signin"
+                    title="Customer Login"
+                    className={`${commonStyles.navLink} flex items-center p-3 -m-3 rounded-xl hover:bg-gray-50`}
+                  >
+                    Login
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link
+                    to="/signup"
+                    title="Sign Up"
+                    className={commonStyles.signUpButton}
+                    role="button"
+                  >
+                    Sign up
+                  </Link>
+                </motion.div>
               </div>
             </motion.nav>
           )}
@@ -182,7 +232,7 @@ function Hero() {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="pt-12 bg-gray-50 sm:pt-16">
+      <section id="hero" className="pt-12 bg-gray-50 sm:pt-16">
         <div className={commonStyles.container}>
           <motion.div
             initial="hidden"
@@ -191,7 +241,10 @@ function Hero() {
             viewport={{ once: true }}
             className="max-w-2xl mx-auto text-center"
           >
-            <motion.h1 variants={fadeInUp} className={commonStyles.sectionTitle}>
+            <motion.h1
+              variants={fadeInUp}
+              className={commonStyles.sectionTitle}
+            >
               "Effortless Inventory Management, Smarter Business Growth"
             </motion.h1>
             <motion.p
@@ -210,23 +263,24 @@ function Hero() {
               variants={fadeInUp}
               className="px-8 sm:items-center sm:justify-center sm:px-0 sm:space-x-5 sm:flex mt-9"
             >
-              <a
-                href="#"
+              <Link
+                to="/signup"
                 title="Get more customers"
                 className={commonStyles.callToActionButton}
                 role="button"
               >
                 Get Started
-              </a>
+              </Link>
 
-              <a
-                href="#"
-                title="Watch free demo"
+              <Link
+                to="/"
+                title="Know About Us"
                 className={commonStyles.demoButton}
                 role="button"
+                onClick={() => scrollToSection("about")}
               >
                 Know About Us
-              </a>
+              </Link>
             </motion.div>
 
             <motion.p variants={fadeInUp} className={commonStyles.textMuted}>

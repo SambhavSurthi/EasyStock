@@ -1,7 +1,16 @@
 import React from "react";
 import { FiTwitter, FiFacebook, FiInstagram, FiGithub } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  // Smooth scrolling function
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const iconStyles =
     "flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-700 rounded-full w-7 h-7 focus:bg-blue-600 hover:bg-blue-600 hover:border-blue-600 focus:border-blue-600";
 
@@ -17,17 +26,27 @@ const Footer = () => {
             <p className="text-base text-gray-500">Company</p>
             <ul className="mt-8 space-y-4">
               {[
-                { href: "#", text: "About" },
-                { href: "#", text: "Contact" },
-                { href: "#", text: "Home" },
-                { href: "#", text: "Login" },
-                { href: "#", text: "Sign Up" },
-                { href: "#", text: "Admin" },
+                { to: "/", text: "Home", sectionId: "hero" },
+                { to: "/", text: "About", sectionId: "about" },
+                { to: "/", text: "Contact", sectionId: "contact" },
+                { to: "/signin", text: "Login" },
+                { to: "/signup", text: "Sign Up" },
+                { to: "/admin", text: "Admin" },
+                { to: "/delivery", text: "Delivery Details" },
               ].map((item, index) => (
                 <li key={index}>
-                  <a href={item.href} className={linkClasses}>
+                  <Link
+                    to={item.to}
+                    title={item.text}
+                    className={linkClasses}
+                    onClick={() => {
+                      if (item.sectionId) {
+                        scrollToSection(item.sectionId);
+                      }
+                    }}
+                  >
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -38,15 +57,15 @@ const Footer = () => {
             <p className="text-base text-gray-500">Help</p>
             <ul className="mt-8 space-y-4">
               {[
-                { href: "#", text: "Customer Support" },
-                { href: "#", text: "Delivery Details" },
-                { href: "#", text: "Terms & Conditions" },
-                { href: "#", text: "Privacy Policy" },
+                { to: "/support", text: "Customer Support" },
+
+                { to: "/terms", text: "Terms & Conditions" },
+                { to: "/privacy", text: "Privacy Policy" },
               ].map((item, index) => (
                 <li key={index}>
-                  <a href={item.href} className={linkClasses}>
+                  <Link to={item.to} className={linkClasses}>
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -57,15 +76,15 @@ const Footer = () => {
             <p className="text-base text-gray-500">Resources</p>
             <ul className="mt-8 space-y-4">
               {[
-                { href: "#", text: "Free eBooks" },
-                { href: "#", text: "Development Tutorial" },
-                { href: "#", text: "How to - Blog" },
-                { href: "#", text: "YouTube Playlist" },
+                { to: "/ebooks", text: "Free eBooks" },
+                { to: "/tutorials", text: "Development Tutorial" },
+                { to: "/blog", text: "How to - Blog" },
+                { to: "/youtube", text: "YouTube Playlist" },
               ].map((item, index) => (
                 <li key={index}>
-                  <a href={item.href} className={linkClasses}>
+                  <Link to={item.to} className={linkClasses}>
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -76,15 +95,15 @@ const Footer = () => {
             <p className="text-base text-gray-500">Extra Links</p>
             <ul className="mt-8 space-y-4">
               {[
-                { href: "#", text: "Customer Support" },
-                { href: "#", text: "Delivery Details" },
-                { href: "#", text: "Terms & Conditions" },
-                { href: "#", text: "Privacy Policy" },
+                { to: "/support", text: "Customer Support" },
+                { to: "/delivery", text: "Delivery Details" },
+                { to: "/terms", text: "Terms & Conditions" },
+                { to: "/privacy", text: "Privacy Policy" },
               ].map((item, index) => (
                 <li key={index}>
-                  <a href={item.href} className={linkClasses}>
+                  <Link to={item.to} className={linkClasses}>
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,11 +113,13 @@ const Footer = () => {
         <hr className="mt-16 mb-10 border-gray-800" />
 
         <div className="flex flex-wrap items-center justify-between">
-          <img
-            className="h-8 w-auto md:order-1"
-            src="./Logo-Light.png"
-            alt="Aura UI Logo"
-          />
+          <Link to="/" className="md:order-1">
+            <img
+              className="h-8 w-auto"
+              src="./Logo-Light.png"
+              alt="EasyStock Logo"
+            />
+          </Link>
 
           <ul className="flex items-center space-x-3 md:order-3">
             {[
@@ -120,7 +141,12 @@ const Footer = () => {
               },
             ].map((item, index) => (
               <li key={index}>
-                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Social Media Link ${index + 1}`}
+                >
                   <div className={iconStyles}>{item.icon}</div>
                 </a>
               </li>

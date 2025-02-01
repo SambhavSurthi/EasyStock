@@ -32,9 +32,9 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.2 } },
 };
 
-const AboutUs = () => {
+const AboutUs = ({id}) => {
   return (
-    <section className={commonStyles.section}>
+    <section id={id} className={commonStyles.section}>
       <div className={commonStyles.container}>
         {/* About Us Section */}
         <motion.div
@@ -126,7 +126,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaBox className="w-10 h-10 text-blue-600" />
+            <FaBox className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Real-Time Stock Tracking
             </h3>
@@ -141,7 +141,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaChartLine className="w-10 h-10 text-blue-600" />
+            <FaChartLine className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Advanced Analytics
             </h3>
@@ -156,7 +156,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaBell className="w-10 h-10 text-blue-600" />
+            <FaBell className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Low Stock Alerts
             </h3>
@@ -170,7 +170,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaTasks className="w-10 h-10 text-blue-600" />
+            <FaTasks className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Stock Predictions
             </h3>
@@ -185,7 +185,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaUsers className="w-10 h-10 text-blue-600" />
+            <FaUsers className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Supplier Management
             </h3>
@@ -200,7 +200,7 @@ const AboutUs = () => {
             variants={fadeInUp}
             className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
           >
-            <FaCloud className="w-10 h-10 text-blue-600" />
+            <FaCloud className="w-10 h-10 text-black" />
             <h3 className="mt-4 text-xl font-semibold text-gray-900">
               Delivery Tracking
             </h3>

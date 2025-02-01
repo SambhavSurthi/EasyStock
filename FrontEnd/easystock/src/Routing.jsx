@@ -4,6 +4,9 @@ import Homepage from './components/home/Homepage'
 import SignUp from './components/home/SignUp'
 import SignIn from './components/home/SignIn'
 import NotFound from './components/NotFound'
+import DelivaryHome from './components/delivary/DelivaryHome'
+import DelivaryNavbar from './components/delivary/DelivaryNavbar'
+import AboutUs from './components/home/AboutUs'
 
 
 const router=createBrowserRouter(
@@ -16,6 +19,7 @@ const router=createBrowserRouter(
             path:"/",
             element:<Homepage />
         },
+        
         {
             path:"/signup",
             element:<SignUp/>
@@ -23,9 +27,21 @@ const router=createBrowserRouter(
         {
             path:"/signin",
             element:<SignIn />
-        }
+        },
 
         
+        {
+            path:"/delivary",
+            element:(<DelivaryHome />),
+            children:
+            [
+                {
+                    path:"nav",
+                    element:<NotFound />
+                }
+            ]
+
+        }
     ]
 )
 
