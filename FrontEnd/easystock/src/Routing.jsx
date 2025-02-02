@@ -7,6 +7,10 @@ import NotFound from './components/NotFound'
 import DelivaryHome from './components/delivary/DelivaryHome'
 import DelivaryNavbar from './components/delivary/DelivaryNavbar'
 import AboutUs from './components/home/AboutUs'
+import DelivaryHistory from './components/delivary/DelivaryHistory'
+import DelivaryProfile from './components/delivary/DelivaryProfile'
+import DelivaryItems from './components/delivary/DelivaryItems'
+import EditDelivaryProfile from './components/delivary/EditDelivaryProfile'
 
 
 const router=createBrowserRouter(
@@ -32,12 +36,24 @@ const router=createBrowserRouter(
         
         {
             path:"/delivary",
-            element:(<DelivaryHome />),
+            element:(<DelivaryNavbar/>),
             children:
             [
                 {
-                    path:"nav",
-                    element:<NotFound />
+                    path:"",
+                    element:<DelivaryItems />
+                },
+                {
+                    path:"delivaryhistory",
+                    element:<DelivaryHistory />
+                },
+                {
+                    path:"delivaryprofile",
+                    element:<DelivaryProfile />
+                },
+                {
+                    path:"editdelivaryprofile",
+                    element:<EditDelivaryProfile />
                 }
             ]
 
