@@ -1,8 +1,8 @@
 import React from "react";
-import cocacola from '/Products/cocacola.webp'
-import clothing from '/Products/clothing.jpeg'
-import headphones from '/Products/headphones.avif'
-import shoes from '/Products/shoes.jpeg'
+import cocacola from "/Products/cocacola.webp";
+import clothing from "/Products/clothing.jpeg";
+import headphones from "/Products/headphones.avif";
+import shoes from "/Products/shoes.jpeg";
 
 const CustomerHomePage = () => {
   return (
@@ -236,7 +236,7 @@ const CustomerHomePage = () => {
 
           <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <li>
-              <a href="#" class="group relative block overflow-hidden">
+              <a href="/customer/product" class="group relative block overflow-hidden">
                 <img
                   src={cocacola}
                   alt=""
@@ -244,17 +244,15 @@ const CustomerHomePage = () => {
                 />
 
                 <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    
-                  </p>
+                  <p class="text-gray-700">$49.99</p>
 
                   <h3 className="text-lg font-medium text-gray-900">
                     Wireless Headphones
                   </h3>
 
                   <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Experience high-quality sound with our wireless headphones. Perfect for music lovers and audiophiles.
+                    Experience high-quality sound with our wireless headphones.
+                    Perfect for music lovers and audiophiles.
                   </p>
 
                   <form className="mt-4 flex gap-4">
@@ -262,19 +260,13 @@ const CustomerHomePage = () => {
                       Add to Cart
                     </button>
 
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
                   </form>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="#" class="group relative block overflow-hidden">
+              <a href="/customer/product" class="group relative block overflow-hidden">
                 <img
                   src={headphones}
                   alt=""
@@ -282,17 +274,15 @@ const CustomerHomePage = () => {
                 />
 
                 <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    
-                  </p>
+                  <p class="text-gray-700">$49.99</p>
 
                   <h3 className="text-lg font-medium text-gray-900">
                     Smart Watch
                   </h3>
 
                   <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Stay connected and track your fitness with our latest smart watch. Stylish and functional for everyday use.
+                    Stay connected and track your fitness with our latest smart
+                    watch. Stylish and functional for everyday use.
                   </p>
 
                   <form className="mt-4 flex gap-4">
@@ -300,19 +290,13 @@ const CustomerHomePage = () => {
                       Add to Cart
                     </button>
 
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
                   </form>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="#" class="group relative block overflow-hidden">
+              <a href="/customer/product" class="group relative block overflow-hidden">
                 <img
                   src={shoes}
                   alt=""
@@ -320,16 +304,15 @@ const CustomerHomePage = () => {
                 />
 
                 <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                  </p>
+                  <p class="text-gray-700">$49.99</p>
 
                   <h3 className="text-lg font-medium text-gray-900">
                     Bluetooth Speaker
                   </h3>
 
                   <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Enjoy your favorite tunes on the go with our portable Bluetooth speaker. Compact and powerful sound.
+                    Enjoy your favorite tunes on the go with our portable
+                    Bluetooth speaker. Compact and powerful sound.
                   </p>
 
                   <form className="mt-4 flex gap-4">
@@ -337,19 +320,13 @@ const CustomerHomePage = () => {
                       Add to Cart
                     </button>
 
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
                   </form>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="#" class="group relative block overflow-hidden">
+              <a href="/customer/product" class="group relative block overflow-hidden">
                 <img
                   src={clothing}
                   alt=""
@@ -377,169 +354,13 @@ const CustomerHomePage = () => {
                       Add to Cart
                     </button>
 
-                    <button
-                      type="button"
-                      class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
                   </form>
                 </div>
               </a>
             </li>
 
-            <li>
-              <a href="#" class="group relative block overflow-hidden">
-                <img
-                  src={cocacola}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
 
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    
-                  </p>
 
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Wireless Headphones
-                  </h3>
-
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Experience high-quality sound with our wireless headphones. Perfect for music lovers and audiophiles.
-                  </p>
-
-                  <form className="mt-4 flex gap-4">
-                    <button className="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                      Add to Cart
-                    </button>
-
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="group relative block overflow-hidden">
-                <img
-                  src={headphones}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    
-                  </p>
-
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Smart Watch
-                  </h3>
-
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Stay connected and track your fitness with our latest smart watch. Stylish and functional for everyday use.
-                  </p>
-
-                  <form className="mt-4 flex gap-4">
-                    <button className="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                      Add to Cart
-                    </button>
-
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="group relative block overflow-hidden">
-                <img
-                  src={shoes}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                  </p>
-
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Bluetooth Speaker
-                  </h3>
-
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Enjoy your favorite tunes on the go with our portable Bluetooth speaker. Compact and powerful sound.
-                  </p>
-
-                  <form className="mt-4 flex gap-4">
-                    <button className="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                      Add to Cart
-                    </button>
-
-                    <button
-                      type="button"
-                      className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="group relative block overflow-hidden">
-                <img
-                  src={clothing}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    <span class="text-gray-400 line-through">$80</span>
-                  </p>
-
-                  <h3 class="mt-1.5 text-lg font-medium text-gray-900">
-                    Wireless Headphones
-                  </h3>
-
-                  <p class="mt-1.5 line-clamp-3 text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Labore nobis iure obcaecati pariatur. Officiis qui, enim
-                    cupiditate aliquam corporis iste.
-                  </p>
-
-                  <form class="mt-4 flex gap-4">
-                    <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                      Add to Cart
-                    </button>
-
-                    <button
-                      type="button"
-                      class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                    >
-                      Buy Now
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </li>
           </ul>
         </div>
       </section>

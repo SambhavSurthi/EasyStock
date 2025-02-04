@@ -17,6 +17,7 @@ import CustomerCart from './components/customer/CustomerCart'
 import CustomerOrderHistory from './components/customer/CustomerOrderHistory'
 import CustomerProfile from './components/customer/CustomerProfile'
 import CustomerAddress from './components/customer/CustomerAddress'
+import CustomerProductDescription from './components/customer/CustomerProductDescription'
 
 
 const router=createBrowserRouter(
@@ -89,6 +90,10 @@ const router=createBrowserRouter(
                     path:"address",
                     element:<CustomerAddress/>
                 },
+                {
+                    path:"product",
+                    element:<CustomerProductDescription />
+                }
                 
             ]
 
