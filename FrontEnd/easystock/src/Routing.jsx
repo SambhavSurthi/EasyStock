@@ -13,6 +13,10 @@ import DelivaryItems from './components/delivary/DelivaryItems'
 import EditDelivaryProfile from './components/delivary/EditDelivaryProfile'
 import CustomerNavbar from './components/customer/CustomerNavbar'
 import CustomerHomePage from './components/customer/CustomerHomePage'
+import CustomerCart from './components/customer/CustomerCart'
+import CustomerOrderHistory from './components/customer/CustomerOrderHistory'
+import CustomerProfile from './components/customer/CustomerProfile'
+import CustomerAddress from './components/customer/CustomerAddress'
 
 
 const router=createBrowserRouter(
@@ -68,6 +72,22 @@ const router=createBrowserRouter(
                 {
                     path:"",
                     element:<CustomerHomePage />
+                },
+                {
+                    path:"cart",
+                    element:<CustomerCart />
+                },
+                {
+                    path:"history",
+                    element:<CustomerOrderHistory />
+                },
+                {
+                    path:"profile",
+                    element:<CustomerProfile />
+                },
+                {
+                    path:"address",
+                    element:<CustomerAddress/>
                 },
                 
             ]
