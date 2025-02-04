@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from "/Logo-removebg.png";
-import { Outlet, Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Outlet, Link } from "react-router-dom";
 
-const DelivaryNavbar = () => {
+const CustomerNavbar = () => {
   const [isOpen, setIsOpen] = useState(false); // For profile dropdown
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu
 
@@ -13,7 +13,6 @@ const DelivaryNavbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
   return (
     <div>
       <header className="bg-white shadow-md">
@@ -21,7 +20,7 @@ const DelivaryNavbar = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <Link to="/delivary" className="block text-teal-600">
+              <Link to="/customer" className="block text-teal-600">
                 <span className="sr-only">Home</span>
                 <img src={logo} alt="logo" className="h-12" />
               </Link>
@@ -33,11 +32,28 @@ const DelivaryNavbar = () => {
               <nav aria-label="Global" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      style={{
+                        fill: "rgba(0, 0, 0, 1)",
+                        transform: "",
+                        msFilter: "",
+                      }}
+                    >
+                      <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path>
+                      <circle cx="10.5" cy="19.5" r="1.5"></circle>
+                      <circle cx="17.5" cy="19.5" r="1.5"></circle>
+                    </svg>
+                  </li>
+                  <li>
                     <Link
-                      to="/delivary/delivaryhistory" // Update the path as needed
+                      to="/" // Update the path as needed
                       className="text-gray-500 text-lg transition hover:text-gray-500/75"
                     >
-                      Delivary History
+                      Order History
                     </Link>
                   </li>
                 </ul>
@@ -53,7 +69,7 @@ const DelivaryNavbar = () => {
                   <span className="sr-only">Toggle dashboard menu</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="size-10 bg-blue-100 "
+                    className="size-10 bg-blue-100"
                     viewBox="0 0 20 20"
                     fill="#4d6bfd"
                   >
@@ -77,7 +93,7 @@ const DelivaryNavbar = () => {
                       </Link>
                     </div>
                     <div className="p-2">
-                    <Link to="/">
+                      <Link to="/">
                         <button
                           type="button"
                           className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
@@ -106,7 +122,7 @@ const DelivaryNavbar = () => {
 
               {/* Mobile Menu Button */}
               <div className="block md:hidden">
-              <button
+                <button
                   className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                   onClick={toggleMobileMenu}
                 >
@@ -188,4 +204,4 @@ const DelivaryNavbar = () => {
   );
 };
 
-export default DelivaryNavbar;
+export default CustomerNavbar;

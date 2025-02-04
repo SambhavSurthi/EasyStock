@@ -11,6 +11,8 @@ import DelivaryHistory from './components/delivary/DelivaryHistory'
 import DelivaryProfile from './components/delivary/DelivaryProfile'
 import DelivaryItems from './components/delivary/DelivaryItems'
 import EditDelivaryProfile from './components/delivary/EditDelivaryProfile'
+import CustomerNavbar from './components/customer/CustomerNavbar'
+import CustomerHomePage from './components/customer/CustomerHomePage'
 
 
 const router=createBrowserRouter(
@@ -32,7 +34,6 @@ const router=createBrowserRouter(
             path:"/signin",
             element:<SignIn />
         },
-
         
         {
             path:"/delivary",
@@ -55,6 +56,20 @@ const router=createBrowserRouter(
                     path:"editdelivaryprofile",
                     element:<EditDelivaryProfile />
                 }
+            ]
+
+        },
+
+        {
+            path:"/customer",
+            element:(<CustomerNavbar/>),
+            children:
+            [
+                {
+                    path:"",
+                    element:<CustomerHomePage />
+                },
+                
             ]
 
         }
