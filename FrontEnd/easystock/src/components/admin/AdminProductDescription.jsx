@@ -28,7 +28,7 @@ const NavigationButton = ({ direction, onClick }) => (
   </button>
 );
 
-const CustomerProductDescription = () => {
+const AdminProductDescription = () => {
   const images = [
     {
       src: headphones,
@@ -171,11 +171,6 @@ const CustomerProductDescription = () => {
               headphones, designed for comfort and performance. Stay connected
               seamlessly with the latest Bluetooth technology.
             </p>
-            <Link to="/customer/cart" >
-            <button className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">
-              Add to Cart
-            </button>
-            </Link>
             
           </div>
         </div>
@@ -184,4 +179,4 @@ const CustomerProductDescription = () => {
   );
 };
 
-export default CustomerProductDescription;
+export default AdminProductDescription;

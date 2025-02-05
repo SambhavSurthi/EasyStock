@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react'
 import cocacola from "/Products/cocacola.webp";
 import clothing from "/Products/clothing.jpeg";
 import headphones from "/Products/headphones.avif";
 import shoes from "/Products/shoes.jpeg";
 import { Outlet, Link } from "react-router-dom";
 
-const CustomerHomePage = () => {
+const AdminAllProducts = () => {
   return (
     <div>
-      <section>
+        <section>
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <header>
             <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
@@ -238,7 +238,7 @@ const CustomerHomePage = () => {
           <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <li>
               <a
-                href="/customer/product"
+                href="/admin/product"
                 class="group relative block overflow-hidden"
               >
                 <img
@@ -259,20 +259,13 @@ const CustomerHomePage = () => {
                     Perfect for music lovers and audiophiles.
                   </p>
 
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
                 </div>
               </a>
             </li>
 
             <li>
               <a
-                href="/customer/product"
+                href="/admin/product"
                 class="group relative block overflow-hidden"
               >
                 <img
@@ -293,20 +286,13 @@ const CustomerHomePage = () => {
                     watch. Stylish and functional for everyday use.
                   </p>
 
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
                 </div>
               </a>
             </li>
 
             <li>
               <a
-                href="/customer/product"
+                href="/admin/product"
                 class="group relative block overflow-hidden"
               >
                 <img
@@ -327,20 +313,14 @@ const CustomerHomePage = () => {
                     Bluetooth speaker. Compact and powerful sound.
                   </p>
 
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
+
                 </div>
               </a>
             </li>
 
             <li>
               <a
-                href="/customer/product"
+                href="/admin/product"
                 class="group relative block overflow-hidden"
               >
                 <img
@@ -365,13 +345,7 @@ const CustomerHomePage = () => {
                     cupiditate aliquam corporis iste.
                   </p>
 
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
+
                 </div>
               </a>
             </li>
@@ -379,7 +353,7 @@ const CustomerHomePage = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default CustomerHomePage;
+export default AdminAllProducts

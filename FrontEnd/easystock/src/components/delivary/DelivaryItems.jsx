@@ -16,12 +16,7 @@ const DelivaryItems = () => {
           <label htmlFor="ExpectedData" className="font-semibold">
             Expected Delivery By:
           </label>
-          <input
-            className="w-full rounded-lg border border-gray-900 text-gray-700 px-2 py-1"
-            type="date"
-            name="ExpectedData"
-            id="ExpectedData"
-          />
+          <p>25/02/2025</p>
 
           <label htmlFor="DelivaryStatus" className="font-semibold">
             Delivery Status:

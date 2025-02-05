@@ -18,6 +18,13 @@ import CustomerOrderHistory from './components/customer/CustomerOrderHistory'
 import CustomerProfile from './components/customer/CustomerProfile'
 import CustomerAddress from './components/customer/CustomerAddress'
 import CustomerProductDescription from './components/customer/CustomerProductDescription'
+import AdminNavbar from './components/admin/AdminNavbar'
+import AdminDashboard from './components/admin/AdminDashboard'
+import AdminAllOrders from './components/admin/AdminAllOrders'
+import AdminAllProducts from './components/admin/AdminAllProducts'
+import AdminProductDescription from './components/admin/AdminProductDescription'
+import AdminInventoryData from './components/admin/AdminInventoryData'
+import AdminOrderHistory from './components/admin/AdminOrderHistory'
 
 
 const router=createBrowserRouter(
@@ -94,6 +101,40 @@ const router=createBrowserRouter(
                     path:"product",
                     element:<CustomerProductDescription />
                 }
+                
+            ]
+
+        },
+        {
+            path:"/admin",
+            element:(<AdminNavbar/>),
+            children:
+            [
+                {
+                    path:"",
+                    element:<AdminDashboard/>
+                },
+                {
+                    path:"allorders",
+                    element:<AdminAllOrders />
+                },
+                {
+                    path:"allproducts",
+                    element:<AdminAllProducts/>
+                },
+                {
+                    path:"product",
+                    element:<AdminProductDescription />
+                },
+                {
+                    path:"inventory",
+                    element:<AdminInventoryData />
+                },
+                {
+                    path:"orderhistory",
+                    element:<AdminOrderHistory />
+                },
+                
                 
             ]
 
