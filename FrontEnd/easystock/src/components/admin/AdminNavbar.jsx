@@ -69,7 +69,7 @@ const AdminNavbar = () => {
 
                   <li>
                     <Link
-                      to="/admin" // Update the path as needed
+                      to="/admin/supplyhistory" // Update the path as needed
                       className="text-gray-500  text-lg transition hover:text-gray-500/75"
                     >
                       Supply History
@@ -135,10 +135,10 @@ const AdminNavbar = () => {
                   <div className="absolute end-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg">
                     <div className="p-2">
                       <Link
-                        to="/admin" // Update the path as needed
+                        to="/admin/addsupplier" // Update the path as needed
                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                       >
-                        Supplier
+                        Add Supplier
                       </Link>
 
                       <Link
@@ -162,11 +162,12 @@ const AdminNavbar = () => {
                       </Link>
 
                       <Link
-                        to="/admin" // Update the path as needed
+                        to="/admin/supplierdetails" // Update the path as needed
                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                       >
-                        Supply History
+                        Supplier Details
                       </Link>
+
 
                       <Link
                         to="/admin" // Update the path as needed

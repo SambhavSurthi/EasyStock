@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cocacola from "/Products/cocacola.webp";
 import clothing from "/Products/clothing.jpeg";
 import headphones from "/Products/headphones.avif";
@@ -6,132 +6,189 @@ import shoes from "/Products/shoes.jpeg";
 import { Outlet, Link } from "react-router-dom";
 
 const CustomerHomePage = () => {
+  const products = [
+    {
+      productId: 2523,
+      productName: "Wireless Headphones",
+      productCategory: "Electronics",
+      productPrice: 1200,
+      productImage: headphones,
+      productDescription:
+        "Wireless Headphones lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+    {
+      productId: 2524,
+      productName: "Hoodie",
+      productCategory: "Clothing",
+      productPrice: 1000,
+      productImage: clothing,
+      productDescription:
+        "Wireless Headphones lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+    {
+      productId: 2525,
+      productName: "Coca Cola",
+      productCategory: "Food",
+      productPrice: 120,
+      productImage: cocacola,
+      productDescription:
+        "Wireless Headphones lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+    {
+      productId: 2526,
+      productName: "Nike Shoes",
+      productCategory: "Footwear",
+      productPrice: 120,
+      productImage: shoes,
+      productDescription:
+        "Wireless Headphones lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+  ];
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [priceRange, setPriceRange] = useState({
+    min: 0,
+    max: findHighestPrice(products),
+  });
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function findHighestPrice(products) {
+    let highestPrice = 0;
+    products.forEach((product) => {
+      if (product.productPrice > highestPrice) {
+        highestPrice = product.productPrice;
+      }
+    });
+
+    return highestPrice;
+  }
+
+  const countFilters = selectedCategories.length;
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((cat) => cat !== category)
+        : [...prev, category]
+    );
+  };
+
+  const handlePriceChange = (e) => {
+    const { id, value } = e.target;
+    setPriceRange((prev) => ({
+      ...prev,
+      [id]: parseInt(value, 10) || 0,
+    }));
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  const filteredProducts = products.filter((product) => {
+    const inCategory = selectedCategories.length
+      ? selectedCategories.includes(product.productCategory)
+      : true;
+    const inPriceRange =
+      product.productPrice >= priceRange.min &&
+      product.productPrice <= priceRange.max;
+    const matchesSearch = product.productName
+      .toLowerCase()
+      .includes(searchTerm);
+
+    return inCategory && inPriceRange && matchesSearch;
+  });
+
   return (
     <div>
       <section>
-        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <header>
-            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
               Product Collection
             </h2>
-
-            {/* <p class="mt-4 max-w-md text-gray-500">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-              praesentium cumque iure dicta incidunt est ipsam, officia dolor
-              fugit natus?
-            </p> */}
           </header>
 
-          <div class="mt-8 sm:flex sm:items-center sm:justify-between">
-            <div class="block sm:hidden">
-              <button class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                <span class="text-sm font-medium"> Filters & Sorting </span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4 rtl:rotate-180"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="hidden sm:flex sm:gap-4">
-              <div class="relative">
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
-                  <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                    <span class="text-sm font-medium"> Category </span>
-
-                    <span class="transition group-open:-rotate-180">
+          <div className="mt-8 sm:flex sm:items-center sm:justify-between">
+            <div className="hidden sm:flex sm:gap-4">
+              <div className="relative">
+                <details className="group [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                    <span className="text-sm font-medium"> Category </span>
+                    <span className="transition group-open:-rotate-180">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         stroke="currentColor"
-                        class="size-4"
+                        className="size-4"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                         />
                       </svg>
                     </span>
                   </summary>
 
-                  <div class="z-50 group-open:absolute group-open:top-auto group-open:mt-2 ltr:group-open:start-0">
-                    <div class="w-96 rounded-sm border border-gray-200 bg-white">
-                      <header class="flex items-center justify-between p-4">
-                        <span class="text-sm text-gray-700"> 0 Selected </span>
-
+                  <div className="z-50 group-open:absolute group-open:top-auto group-open:mt-2 ltr:group-open:start-0">
+                    <div className="w-96 rounded-sm border border-gray-200 bg-white">
+                      <header className="flex items-center justify-between p-4">
+                        <span className="text-sm text-gray-700">
+                          {" "}
+                          {countFilters} Selected{" "}
+                        </span>
                         <button
                           type="button"
-                          class="text-sm text-gray-900 underline underline-offset-4"
+                          className="text-sm text-gray-900 underline underline-offset-4"
+                          onClick={() => setSelectedCategories([])}
                         >
                           Reset
                         </button>
                       </header>
 
-                      <ul class="space-y-1 border-t border-gray-200 p-4">
+                      <ul className="space-y-1 border-t border-gray-200 p-4">
                         <li>
-                          <label
-                            for="FilterInStock"
-                            class="inline-flex items-center gap-2"
-                          >
+                          <label className="inline-flex items-center gap-2">
                             <input
                               type="checkbox"
-                              id="FilterInStock"
-                              class="size-5 rounded-sm border-gray-300"
+                              id="Food"
+                              className="size-5 rounded-sm border-gray-300"
+                              checked={selectedCategories.includes("Food")}
+                              onChange={() => handleCategoryChange("Food")}
                             />
-
-                            <span class="text-sm font-medium text-gray-700">
-                              {" "}
-                              Foods & Bevrages (5+){" "}
+                            <span className="text-sm font-medium text-gray-700">
+                              Food & Beverages
                             </span>
                           </label>
                         </li>
-
                         <li>
-                          <label
-                            for="FilterPreOrder"
-                            class="inline-flex items-center gap-2"
-                          >
+                          <label className="inline-flex items-center gap-2">
                             <input
                               type="checkbox"
-                              id="FilterPreOrder"
-                              class="size-5 rounded-sm border-gray-300"
+                              id="Clothing"
+                              className="size-5 rounded-sm border-gray-300"
+                              checked={selectedCategories.includes("Clothing")}
+                              onChange={() => handleCategoryChange("Clothing")}
                             />
-
-                            <span class="text-sm font-medium text-gray-700">
-                              {" "}
-                              Clothing (3+){" "}
+                            <span className="text-sm font-medium text-gray-700">
+                              Clothing
                             </span>
                           </label>
                         </li>
-
                         <li>
-                          <label
-                            for="FilterOutOfStock"
-                            class="inline-flex items-center gap-2"
-                          >
+                          <label className="inline-flex items-center gap-2">
                             <input
                               type="checkbox"
-                              id="FilterOutOfStock"
-                              class="size-5 rounded-sm border-gray-300"
+                              id="Footwear"
+                              className="size-5 rounded-sm border-gray-300"
+                              checked={selectedCategories.includes("Footwear")}
+                              onChange={() => handleCategoryChange("Footwear")}
                             />
-
-                            <span class="text-sm font-medium text-gray-700">
-                              {" "}
-                              Footware (10+){" "}
+                            <span className="text-sm font-medium text-gray-700">
+                              Footwear
                             </span>
                           </label>
                         </li>
@@ -141,72 +198,66 @@ const CustomerHomePage = () => {
                 </details>
               </div>
 
-              <div class="relative">
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
-                  <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                    <span class="text-sm font-medium"> Price </span>
-
-                    <span class="transition group-open:-rotate-180">
+              <div className="relative">
+                <details className="group [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                    <span className="text-sm font-medium"> Price </span>
+                    <span className="transition group-open:-rotate-180">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         stroke="currentColor"
-                        class="size-4"
+                        className="size-4"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                         />
                       </svg>
                     </span>
                   </summary>
 
-                  <div class="z-50 group-open:absolute group-open:top-auto group-open:mt-2 ltr:group-open:start-0">
-                    <div class="w-96 rounded-sm border border-gray-200 bg-white">
-                      <header class="flex items-center justify-between p-4">
-                        <span class="text-sm text-gray-700">
-                          {" "}
-                          The highest price is $600{" "}
+                  <div className="z-50 group-open:absolute group-open:top-auto group-open:mt-2 ltr:group-open:start-0">
+                    <div className="w-96 rounded-sm border border-gray-200 bg-white">
+                      <header className="flex items-center justify-between p-4">
+                        <span className="text-sm text-gray-700">
+                          Highest price: {findHighestPrice(products)}
                         </span>
-
                         <button
                           type="button"
-                          class="text-sm text-gray-900 underline underline-offset-4"
+                          className="text-sm text-gray-900 underline underline-offset-4"
+                          onClick={() => setPriceRange({ min: 0, max: 100000 })}
                         >
                           Reset
                         </button>
                       </header>
 
-                      <div class="border-t border-gray-200 p-4">
-                        <div class="flex justify-between gap-4">
-                          <label
-                            for="FilterPriceFrom"
-                            class="flex items-center gap-2"
-                          >
-                            <span class="text-sm text-gray-600">$</span>
-
+                      <div className="border-t border-gray-200 p-4">
+                        <div className="flex justify-between gap-4">
+                          <label className="flex items-center gap-2">
+                            <span className="text-sm text-gray-600">Rs</span>
                             <input
                               type="number"
-                              id="FilterPriceFrom"
+                              id="min"
                               placeholder="From"
-                              class="w-full rounded-md border-gray-200 shadow-xs sm:text-sm"
+                              className="w-full rounded-md border-gray-200 shadow-xs sm:text-sm"
+                              value={priceRange.min}
+                              onChange={handlePriceChange}
                             />
                           </label>
 
-                          <label
-                            for="FilterPriceTo"
-                            class="flex items-center gap-2"
-                          >
-                            <span class="text-sm text-gray-600">$</span>
-
+                          <label className="flex items-center gap-2">
+                            <span className="text-sm text-gray-600">Rs</span>
                             <input
                               type="number"
-                              id="FilterPriceTo"
+                              id="max"
                               placeholder="To"
-                              class="w-full rounded-md border-gray-200 shadow-xs sm:text-sm"
+                              className="w-full rounded-md border-gray-200 shadow-xs sm:text-sm"
+                              value={priceRange.max}
+                              onChange={handlePriceChange}
                             />
                           </label>
                         </div>
@@ -215,166 +266,60 @@ const CustomerHomePage = () => {
                   </div>
                 </details>
               </div>
+
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="border border-gray-300 rounded-sm px-4 py-1 text-gray-700"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
             </div>
-
-            {/* <div class="hidden sm:block">
-              <label for="SortBy" class="sr-only">
-                SortBy
-              </label>
-
-              <select
-                id="SortBy"
-                class="h-10 rounded-sm border-gray-300 text-sm"
-              >
-                <option>Sort By</option>
-                <option value="Title, DESC">Title, DESC</option>
-                <option value="Title, ASC">Title, ASC</option>
-                <option value="Price, DESC">Price, DESC</option>
-                <option value="Price, ASC">Price, ASC</option>
-              </select>
-            </div> */}
           </div>
 
-          <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <li>
-              <a
-                href="/customer/product"
-                class="group relative block overflow-hidden"
-              >
-                <img
-                  src={cocacola}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {filteredProducts.length === 0 ? (
+              <p>No Products Found</p>
+            ) : (
+              filteredProducts.map((product) => {
+                return (
+                  <li key={product.productId}>
+                    <a
+                      href="/customer/product"
+                      className="group relative block overflow-hidden"
+                    >
+                      <img
+                        src={product.productImage}
+                        alt="product Image"
+                        className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                      />
 
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">$49.99</p>
+                      <div className="relative border border-gray-100 bg-white p-6">
+                        <p className="text-gray-700">
+                          {product.productPrice} Rs
+                        </p>
 
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Wireless Headphones
-                  </h3>
+                        <h3 className="text-lg font-medium text-gray-900">
+                          {product.productName}
+                        </h3>
 
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Experience high-quality sound with our wireless headphones.
-                    Perfect for music lovers and audiophiles.
-                  </p>
+                        <p className="mt-1.5 line-clamp-3 text-gray-700">
+                          {product.productDescription}
+                        </p>
 
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="/customer/product"
-                class="group relative block overflow-hidden"
-              >
-                <img
-                  src={headphones}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">$49.99</p>
-
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Smart Watch
-                  </h3>
-
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Stay connected and track your fitness with our latest smart
-                    watch. Stylish and functional for everyday use.
-                  </p>
-
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="/customer/product"
-                class="group relative block overflow-hidden"
-              >
-                <img
-                  src={shoes}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">$49.99</p>
-
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Bluetooth Speaker
-                  </h3>
-
-                  <p className="mt-1.5 line-clamp-3 text-gray-700">
-                    Enjoy your favorite tunes on the go with our portable
-                    Bluetooth speaker. Compact and powerful sound.
-                  </p>
-
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="/customer/product"
-                class="group relative block overflow-hidden"
-              >
-                <img
-                  src={clothing}
-                  alt=""
-                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                />
-
-                <div class="relative border border-gray-100 bg-white p-6">
-                  <p class="text-gray-700">
-                    $49.99
-                    <span class="text-gray-400 line-through">$80</span>
-                  </p>
-
-                  <h3 class="mt-1.5 text-lg font-medium text-gray-900">
-                    Wireless Headphones
-                  </h3>
-
-                  <p class="mt-1.5 line-clamp-3 text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Labore nobis iure obcaecati pariatur. Officiis qui, enim
-                    cupiditate aliquam corporis iste.
-                  </p>
-
-                  <Link to="/customer/cart">
-                    <form class="mt-4 flex gap-4">
-                      <button class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
-                        Add to Cart
-                      </button>
-                    </form>
-                  </Link>
-                </div>
-              </a>
-            </li>
+                        <Link to="/customer/cart">
+                          <form className="mt-4 flex gap-4">
+                            <button className="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
+                              Add to Cart
+                            </button>
+                          </form>
+                        </Link>
+                      </div>
+                    </a>
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </section>

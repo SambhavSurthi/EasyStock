@@ -10,10 +10,6 @@ function App() {
 
   return (
     <div>
-      {/* <Homepage /> */}
-      {/* <DelivaryHome /> */}
-      {/* <SignUp /> */}
-      {/* <SignIn/> */}
       <Routing />
       
     </div>
