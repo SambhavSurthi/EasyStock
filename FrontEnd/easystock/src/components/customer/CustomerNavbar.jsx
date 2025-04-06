@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import logo from "/Logo-removebg.png";
 import { Outlet, Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const CustomerNavbar = () => {
   const [isOpen, setIsOpen] = useState(false); // For profile dropdown
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
 
   const toggleProfileDropdown = () => {
     setIsOpen(!isOpen);
@@ -102,6 +110,7 @@ const CustomerNavbar = () => {
                         <button
                           type="button"
                           className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                          onClick={handleLogout}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaCheckCircle, FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Use react-router-dom Link
+import { Link, useNavigate } from 'react-router-dom'; // Use react-router-dom Link
 import { motion } from 'framer-motion'; // For animations
+import { signup } from "../../api/security/api";
+import { useState } from "react";
 
 const commonStyles = {
   inputIcon: "absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none",
@@ -21,6 +23,23 @@ const stagger = {
 };
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signup(name, email, password, "CUSTOMER");
+      alert("Signup Successful!");
+      navigate('/signin');
+    } catch (err) {
+      alert("Signup Failed! "+ err.response.data);
+    }
+  };
+
   return (
     <section className="bg-white min-h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -117,6 +136,7 @@ const SignUp = () => {
               variants={stagger}
               action="#"
               method="POST"
+              onSubmit={handleSubmit}
               className="mt-8 space-y-5"
             >
               {/* Full Name Field */}
@@ -131,6 +151,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Enter your full name"
+                    onChange={(e) => setName(e.target.value)}
                     className={commonStyles.input}
                   />
                 </div>
@@ -149,6 +170,7 @@ const SignUp = () => {
                     type="email"
                     placeholder="Enter your email"
                     className={commonStyles.input}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </motion.div>
@@ -166,6 +188,7 @@ const SignUp = () => {
                     type="password"
                     placeholder="Enter your password"
                     className={commonStyles.input}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </motion.div>
