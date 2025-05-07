@@ -2,9 +2,8 @@ import React from "react";
 import { FaCheckCircle, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { login } from "../../api/security/api";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Common styles
 const commonStyles = {
@@ -33,26 +32,6 @@ const scaleIn = {
 };
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await login({ email, password }); // send { email, password }
-      localStorage.setItem('token', res.data.token);
-      const userRole = res.data.role;
-  
-      if (userRole === 'ADMIN') navigate('/admin/dashboard');
-      else if (userRole === 'CUSTOMER') navigate('/customer/dashboard');
-      else if (userRole === 'DELIVERY') navigate('/delivery/dashboard');
-    } catch (error) {
-      alert('Login failed'+ error.response.data);
-    }
-  };
-  
 
   return (
     <section className="bg-white min-h-screen">
@@ -126,7 +105,10 @@ const SignIn = () => {
         >
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             {/* Logo */}
-            <motion.div variants={fadeInUp} className="flex justify-center mb-8">
+            <motion.div
+              variants={fadeInUp}
+              className="flex justify-center mb-8"
+            >
               <Link to="/">
                 <img
                   src="./Logo-removebg.png" // Replace with your logo path
@@ -157,7 +139,7 @@ const SignIn = () => {
               action="#"
               method="POST"
               className="mt-8 space-y-5"
-              onSubmit={handleSubmit}
+              
             >
               {/* Email Field */}
               <motion.div variants={fadeInUp}>
@@ -171,8 +153,9 @@ const SignIn = () => {
                   <input
                     type="email"
                     placeholder="Enter your email to get started"
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    
                     className={commonStyles.input}
+                    required
                   />
                 </div>
               </motion.div>
@@ -195,10 +178,12 @@ const SignIn = () => {
                     type="password"
                     placeholder="Enter your password"
                     className={commonStyles.input}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    
+                    required
                   />
                 </div>
               </motion.div>
+
 
               {/* Submit Button */}
               <motion.div variants={fadeInUp}>
